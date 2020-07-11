@@ -1,0 +1,421 @@
+package Project;
+
+import java.util.*;
+public class Project1
+{
+    //master file
+    int f_id[]={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,0,0,0,0};
+    String f_categ[]={"Veg   ","Veg   ","Veg   ","Veg   ","Veg   ","Veg   ","Veg   ","Veg   ","Veg   ",
+            "Veg   ","NonVeg","NonVeg","NonVeg","NonVeg","NonVeg","NonVeg","NonVeg","NonVeg",
+            "NonVeg","NonVeg","","","",""};
+    String f_name[]={"Paneer Tikka     ","Crispy Corn      ","Veg Seekh Kebab  ","Veg Manchurian   ",
+            "Golden Coin      ","Hara Bhara Kebab ","Pav Bhaji        ","Palak Paneer     ",
+            "Spicy Mushroom   ","Mix Vegetable    ","Chicken Tikka    ","Murgh Malai Tikka",
+            "Tandoori Chicken ","Prawn Fry        ","Tandoori Prawns  ","Fish Ajwain Tikka",
+            "Pomphret         ","Chilly Chicken   ","Chicken 65       ","Murgh Spicy Tikka",
+            "","","",""};
+    int f_qty[]={20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,0,0,0,0};
+    int f_cost[]={110,120,170,100,90,100,90,150,175,160,250,210,290,310,220,350,270,230,230,
+            240,0,0,0,0};
+    char f_remove[]={'n','n','n','n','n','n','n','n','n','n','n','n','n','n','n','n','n','n',
+            'n','n','n','n','n','n'};
+
+    //transaction file
+    int cno=101;
+    int c_id[]={101,102,103,0,0,0,0};
+    int c_m_id[]={13,3,14,0,0,0,0};
+    String c_name[]={"Aditya","Nainil","Kunind","","","",""};
+    String c_mob[]={"9892180188","9820553197","9867651974","","","",""};
+    String c_m_type[]={"NonVeg","Veg   ","NonVeg","","","",""};
+    String c_m_name[]={"Tandoori Chicken","Veg Seekh Kebab ","Prawn Fry       ","","","",""};
+    int c_m_qty[]={2,3,2,0,0,0,0};
+    int c_m_amt[]={580,510,620,0,0,0,0};
+
+    Scanner sc=new Scanner(System.in);
+    int k=19;int k1=2;
+    void main()
+    {
+        int ch,conti=1,out=0;
+
+        do
+        {
+            System.out.println("\f");
+            System.out.println("\t\t\t\t********** The Urban Tadka **********");
+            System.out.println();
+            System.out.println("\t\t\t\t\t\tWelcome!!");
+            System.out.println("1.MENU");
+            System.out.println("2.REGISTER");
+            System.out.println("3.ORDER");
+            System.out.println("4.ADD");
+            System.out.println("5.DELETE");
+            System.out.println("6.MODIFY");
+            System.out.println("7.REPORT");
+            System.out.println("8.BILL");
+
+            while(true)
+            {
+                try
+                {
+                    System.out.println("Enter your choice");
+                    ch=sc.nextInt();
+                    break;
+                }
+                catch(InputMismatchException ob)
+                {
+                    System.out.println("ENTER A NUMBER ONLY!");
+                    String db=sc.nextLine();
+                }
+            }
+            switch(ch)
+            {
+                case 1:
+                menu();
+                break;
+                case 2:
+                register();
+                break;
+                case 3:
+                //order();
+                break;
+                case 4:
+                add();
+                break;
+                case 5:
+                delete();
+                break;
+                case 6:
+                //modify();
+                break;
+                case 7:
+                //report();
+                break;
+                case 8:
+                //bill();
+                break;
+                default:
+                System.out.println("**INVALID CHOICE**");
+
+            }
+            if(out==0)
+            {
+                while(true)
+                {
+                    try
+                    {
+                        System.out.println("Press 1 to re-enter choice and enter any other number to exit");
+                        conti=sc.nextInt();
+                        break;
+                    }
+                    catch(InputMismatchException ob)
+                    {
+                        System.out.println("ENTER A NUMBER ONLY!");
+                        String db=sc.nextLine();
+                    }
+                }
+            }
+        } while(conti==1);
+        System.out.println("\t\t\t\tTHANK YOU!!"); 
+        System.out.println("\t\t\t\tVISIT AGAIN!!");
+
+    }
+
+    void menu()
+    {
+        int i;
+        System.out.println("\f");
+        System.out.println("ID:\t\t"+"Category:\t"+"Name:\t\t\t\t"+"Quantity:\t"+"Cost:"); 
+
+        for(i=0;i<=k;i++)
+        {
+            if(f_remove[i]!='y')
+            {
+                System.out.println(f_id[i]+"\t\t"+f_categ[i]+"\t\t"+f_name[i]+"\t\t"+f_qty[i]+"\t\t"+f_cost[i]);
+            }
+        }
+    }
+
+    void register()
+    {  
+        int l;
+        k1++;
+        c_id[k1]=++c_id[k1-1];
+        System.out.println("Your customer ID is :"+c_id[k1]);
+
+        System.out.println("Enter your name:");
+        c_name[k1]=sc.nextLine();
+
+        while(true)
+        {
+
+            System.out.println("Enter your mobile number:");
+            c_mob[k1]=sc.next();
+
+            l=c_mob[k1].length();
+            
+            if(l==10)
+            {
+                break;
+            }
+            else
+            {
+                System.out.println("A MOBILE NUMBER IS OF 10 DIGITS!");
+                System.out.println("YOU HAVE TO ENTER YOUR NUMBER AGAIN");
+            }
+        }
+    }
+    
+    void order()
+    {
+
+    }
+
+    void add()
+    {
+        char categ;
+        k++;
+        System.out.println("\f");
+        System.out.println("Enter the specifications of the dish you want to add");
+        System.out.println();
+        while(true)
+        {
+            System.out.println("Enter \'V\' for Veg and \'N\' for NonVeg");
+            categ=sc.next().charAt(0);
+            if(categ=='V'||categ=='v')
+            {
+                f_categ[k]="Veg   ";
+                break;
+            }
+            else if(categ=='N'||categ=='n')
+            {
+                f_categ[k]="NonVeg";
+                break;
+            }
+            else
+            {
+                System.out.println("WRONG INPUT!");
+            }
+        }
+
+        while(true)
+        {
+            try
+            {
+                System.out.println("Enter the quantity of the dish available");
+                f_qty[k]=sc.nextInt();
+                break;
+            }
+            catch(InputMismatchException ob)
+            {
+                System.out.println("ENTER A NUMBER ONLY!");
+                String db=sc.nextLine();
+            }
+        }
+
+        while(true)
+        {
+            try
+            {
+                System.out.println("Enter the cost of the dish:");
+                f_cost[k]=sc.nextInt();
+                break;
+            }
+            catch(InputMismatchException ob)
+            {
+                System.out.println("ENTER A NUMBER ONLY");
+                String db=sc.nextLine();
+            }
+        }
+
+        String db=sc.nextLine();
+        System.out.println("Enter the name of the dish");
+        f_name[k]=sc.nextLine();
+
+        System.out.println("The ID of the new dish is:"+(k+1));
+        f_id[k]=k+1;
+    }
+
+    void delete()
+    {
+        int id;
+        menu();
+        System.out.println();
+        while(true)
+        {
+            while(true)
+            {
+                try
+                {
+                    System.out.println("Enter the ID of the dish you want to remove:");
+                    id=sc.nextInt();
+                    break;
+                }
+                catch(InputMismatchException ob)
+                {
+                    System.out.println("ENTER A NUMBER ONLY!!");
+                    String db=sc.nextLine();
+                }
+            }
+            if(id>k+1)
+            {
+                System.out.println("INVALID DISH ID!");
+            }
+            else
+            {
+                f_remove[id-1]='y';
+                break;
+            }
+        }
+
+    }
+
+    void modify()
+    {
+        int ch,id,ncost,nqty;char selec;
+
+        while(true)
+        {
+            System.out.println("\f");
+            System.out.println("What do you want to modify?");
+            System.out.println("1.COST");
+            System.out.println("2.QUANTITY");
+
+            while(true)
+            {
+                try
+                {
+                    System.out.println("Enter your choice");
+                    ch=sc.nextInt();
+                    break;
+                }
+                catch(InputMismatchException ob)
+                {
+                    System.out.println("ENTER A NUMBER ONLY!");
+                    String db=sc.nextLine();
+                }
+            }
+
+            if(ch==1)
+            {
+                while(true)
+                {
+                    while(true)
+                    {
+                        try
+                        {
+                            System.out.println("Enter the ID of the dish whose cost you want to change:");
+                            id=sc.nextInt();
+                            break;
+                        }
+                        catch(InputMismatchException ob)
+                        {
+                            System.out.println("ENTER A NUMBER ONLY!!");
+                            String db=sc.nextLine();
+                        }
+                    }
+                    if(id>k+1)
+                    {
+                        System.out.println("INVALID ID!");
+                    }
+                    else
+                    {
+                        System.out.println("Enter the new cost of the dish:");
+                        nqty=sc.nextInt();
+                        System.out.println("Are you sure you want to change the cost?");
+                        System.out.println("Enter \'Y\' for YES and \'N\' for NO");
+                        selec=sc.next().charAt(0);
+                        if(selec=='Y'||selec=='y')
+                        {
+                            f_cost[id]=nqty;
+                            System.out.println("Your quantity has been changed");
+                            break;
+                        }
+                        else if(selec=='N'||selec=='n')
+                        {
+                            System.out.println("Your quantity has not beem changed");
+                            break;
+                        }
+                        else
+                        {
+                            System.out.println("Wrong Input");
+                        }
+                    }
+                }
+                break;
+            }
+            else if(ch==2)
+            {
+                while(true)
+                {
+                    while(true)
+                    {
+                        try
+                        {
+                            System.out.println("Enter the ID of the dish whose quantity you want to change:");
+                            id=sc.nextInt();
+                            break;
+                        }
+                        catch(InputMismatchException ob)
+                        {
+                            System.out.println("ENTER A NUMBER ONLY!!");
+                            String db=sc.nextLine();
+                        }
+                    }
+                    if(id>k+1)
+                    {
+                        System.out.println("INVALID ID!");
+                    }
+                    else
+                    {
+                        System.out.println("Enter the new quantity of the dish:");
+                        nqty=sc.nextInt();
+                        System.out.println("Are you sure you want to change the quantity?");
+                        System.out.println("Enter \'Y\' for YES and \'N\' for NO");
+                        selec=sc.next().charAt(0);
+                        if(selec=='Y'||selec=='y')
+                        {
+                            f_cost[id]=nqty;
+                            System.out.println("Your quantity has been changed");
+                            break;
+                        }
+                        else if(selec=='N'||selec=='n')
+                        {
+                            System.out.println("Your quantity has not beem changed");
+                            break;
+                        }
+                        else
+                        {
+                            System.out.println("Wrong Input");
+                        }
+                    }
+                }
+                break;
+            }
+            else
+            {
+                System.out.println("WRONG CHOICE!");
+                System.out.println("Please enter again");
+            }
+        }
+    }
+
+    void report()
+    {
+    }
+
+    void bill()
+    {   
+    }
+}
+
+
+     
+
+                
+        
+                   
+
+            
+    
+        
+
+    
